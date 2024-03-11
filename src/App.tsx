@@ -4,9 +4,11 @@ import EmployeeFormUsingComponent from "./components/EmployeeForm-using-componen
 function App() {
   return (
     <div className="appContainer">
-      <h1 className="header">REACT FORM</h1>
-      {/* <EmployeeForm /> */}
-      <EmployeeFormUsingComponent />
+      <div className="app">
+        <h1 className="header">REACT FORM</h1>
+        {/* <EmployeeForm /> */}
+        <EmployeeFormUsingComponent />
+      </div>
     </div>
   );
 }

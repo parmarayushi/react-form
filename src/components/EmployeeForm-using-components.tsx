@@ -9,6 +9,11 @@ export default function EmployeeFormUsingComponent() {
     lastName: "",
     email: "",
     contactNo: "",
+    address: "",
+    social: {
+      facebook: "",
+      linkedin: "",
+    },
   };
 
   // Validation using Yup library
@@ -21,6 +26,7 @@ export default function EmployeeFormUsingComponent() {
       .required("Required!!"),
     email: Yup.string().email("Invalid email address").required("Required!!"),
     contactNo: Yup.string().required("Required!!"),
+    address: Yup.string().required("Required!!"),
   });
 
   const onSubmit = (values: EmpForm) => console.log("onsubmit", values);
@@ -33,29 +39,81 @@ export default function EmployeeFormUsingComponent() {
       onSubmit={onSubmit}
     >
       <Form className="formContainer">
-        <div className="field-input">
+        <div className="form-control">
           <label htmlFor="firstName">First Name</label>
-          <Field type="text" id="firstName" name="firstName" />
-          <ErrorMessage name="firstName" />
+          <Field
+            type="text"
+            id="firstName"
+            name="firstName"
+            placeholder="Enter first Name"
+          />
+          <ErrorMessage name="firstName" component="div" className="errorMsg" />
         </div>
 
-        <div className="field-input">
+        <div className="form-control">
           <label htmlFor="lastName">Last Name</label>
-          <Field type="text" id="lastName" name="lastName" />
-          <ErrorMessage name="lastName" />
+          <Field
+            type="text"
+            id="lastName"
+            name="lastName"
+            placeholder="Enter last Name"
+          />
+          <ErrorMessage name="lastName" component="div" className="errorMsg" />
         </div>
 
-        <div className="field-input">
+        <div className="form-control">
           <label htmlFor="email">Email</label>
-          <Field type="text" id="email" name="email" />
-          <ErrorMessage name="email" />
+          <Field
+            type="text"
+            id="email"
+            name="email"
+            placeholder="Enter email"
+          />
+          <ErrorMessage name="email" component="div" className="errorMsg" />
         </div>
 
-        <div className="field-input">
+        <div className="form-control">
           <label htmlFor="contactNo">Contact No.</label>
-          <Field type="text" id="contactNo" name="contactNo" />
-          <ErrorMessage name="contactNo" />
+          <Field
+            type="text"
+            id="contactNo"
+            name="contactNo"
+            placeholder="Enter contactNo"
+          />
+          <ErrorMessage name="contactNo" component="div" className="errorMsg" />
         </div>
+
+        <div className="form-control">
+          <label htmlFor="address">Address</label>
+          <Field
+            as="textarea"
+            id="address"
+            name="address"
+            placeholder="Enter address"
+          />
+          <ErrorMessage name="address" component="div" className="errorMsg" />
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="facebook">Facebook Profile</label>
+          <Field
+            type="text"
+            id="facebook"
+            name="social.facebook"
+            placeholder="Enter facebook profile"
+          />
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="linkedin">Linkedin Profile</label>
+          <Field
+            type="text"
+            id="linkedin"
+            name="social.linkedin"
+            placeholder="Enter linkedin profile"
+          />
+        </div>
+
         <div className="buttonContainer">
           <button type="submit" className="button">
             Submit

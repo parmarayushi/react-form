@@ -69,7 +69,7 @@ export default function EmployeeForm() {
   return (
     <>
       <form className="formContainer" onSubmit={formik.handleSubmit}>
-        <div className="field-input">
+        <div className="form-control">
           <label htmlFor="firstName">First Name</label>
           <input
             type="text"
@@ -86,7 +86,7 @@ export default function EmployeeForm() {
             <div className="errorMsg">{formik.errors.firstName}</div>
           ) : null}
         </div>
-        <div className="field-input">
+        <div className="form-control">
           <label htmlFor="lastName">Last Name</label>
           <input
             type="text"
@@ -103,7 +103,7 @@ export default function EmployeeForm() {
             <div className="errorMsg">{formik.errors.lastName}</div>
           ) : null}
         </div>
-        <div className="field-input">
+        <div className="form-control">
           <label htmlFor="email">Email</label>
           <input
             type="text"
@@ -120,7 +120,7 @@ export default function EmployeeForm() {
             <div className="errorMsg">{formik.errors.email}</div>
           ) : null}
         </div>
-        <div className="field-input">
+        <div className="form-control">
           <label htmlFor="contactNo">Contact No.</label>
           <input
             type="text"
