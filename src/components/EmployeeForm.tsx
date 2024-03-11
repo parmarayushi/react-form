@@ -58,7 +58,10 @@ export default function EmployeeForm() {
   const formik = useFormik({
     initialValues,
     onSubmit,
+    // Validation using formikErrors
     // validate,
+
+    // Validation using Yup library
     validationSchema,
   });
 
@@ -70,10 +73,13 @@ export default function EmployeeForm() {
           <input
             type="text"
             id="firstName"
-            name="firstName"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.firstName}
+            // name="firstName"
+            // onChange={formik.handleChange}
+            // onBlur={formik.handleBlur}
+            // value={formik.values.firstName}
+
+            //reducing boilerplate
+            {...formik.getFieldProps("firstName")}
           />
           {formik.touched.firstName && formik.errors.firstName ? (
             <div className="errorMsg">{formik.errors.firstName}</div>
@@ -84,10 +90,13 @@ export default function EmployeeForm() {
           <input
             type="text"
             id="lastName"
-            name="lastName"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.lastName}
+            // name="lastName"
+            // onChange={formik.handleChange}
+            // onBlur={formik.handleBlur}
+            // value={formik.values.lastName}
+
+            //reducing boilerplate
+            {...formik.getFieldProps("lastName")}
           />
           {formik.touched.lastName && formik.errors.lastName ? (
             <div className="errorMsg">{formik.errors.lastName}</div>
@@ -98,10 +107,13 @@ export default function EmployeeForm() {
           <input
             type="text"
             id="email"
-            name="email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
+            // name="email"
+            // onChange={formik.handleChange}
+            // onBlur={formik.handleBlur}
+            // value={formik.values.email}
+
+            //reducing boilerplate
+            {...formik.getFieldProps("email")}
           />
           {formik.touched.email && formik.errors.email ? (
             <div className="errorMsg">{formik.errors.email}</div>
@@ -112,10 +124,13 @@ export default function EmployeeForm() {
           <input
             type="text"
             id="contactNo"
-            name="contactNo"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.contactNo}
+            // name="contactNo"
+            // onChange={formik.handleChange}
+            // onBlur={formik.handleBlur}
+            // value={formik.values.contactNo}
+
+            //reducing boilerplate
+            {...formik.getFieldProps("contactNo")}
           />
           {formik.touched.contactNo && formik.errors.contactNo ? (
             <div className="errorMsg">{formik.errors.contactNo}</div>
