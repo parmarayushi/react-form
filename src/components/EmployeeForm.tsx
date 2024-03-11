@@ -1,4 +1,4 @@
-import { FormikErrors, useFormik } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 import { EmpForm } from "../model";
 import "./EmployeeForm.css";
@@ -12,34 +12,34 @@ export default function EmployeeForm() {
   };
 
   // Validation using formikErrors
-  const validate = (values: EmpForm) => {
-    const errors: FormikErrors<EmpForm> = {};
+  // const validate = (values: EmpForm) => {
+  //   const errors: FormikErrors<EmpForm> = {};
 
-    if (!values.firstName) {
-      errors.firstName = "Required";
-    } else if (values.firstName.length > 15) {
-      errors.firstName = "Must be 15 characters or less";
-    }
+  //   if (!values.firstName) {
+  //     errors.firstName = "Required";
+  //   } else if (values.firstName.length > 15) {
+  //     errors.firstName = "Must be 15 characters or less";
+  //   }
 
-    if (!values.lastName) {
-      errors.lastName = "Required";
-    } else if (values.lastName.length > 20) {
-      errors.lastName = "Must be 20 characters or less";
-    }
+  //   if (!values.lastName) {
+  //     errors.lastName = "Required";
+  //   } else if (values.lastName.length > 20) {
+  //     errors.lastName = "Must be 20 characters or less";
+  //   }
 
-    if (!values.email) {
-      errors.email = "Required";
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-      errors.email = "Invalid email address";
-    }
+  //   if (!values.email) {
+  //     errors.email = "Required";
+  //   } else if (
+  //     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+  //   ) {
+  //     errors.email = "Invalid email address";
+  //   }
 
-    if (!values.contactNo) {
-      errors.contactNo = "Required";
-    }
-    return errors;
-  };
+  //   if (!values.contactNo) {
+  //     errors.contactNo = "Required";
+  //   }
+  //   return errors;
+  // };
 
   // Validation using Yup library
   const validationSchema = Yup.object({
@@ -55,6 +55,7 @@ export default function EmployeeForm() {
 
   const onSubmit = (values: EmpForm) => console.log("onsubmit", values);
 
+  // Form using useFormik() method
   const formik = useFormik({
     initialValues,
     onSubmit,
