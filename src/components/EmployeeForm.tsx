@@ -1,4 +1,5 @@
 import { FormikErrors, useFormik } from "formik";
+import * as Yup from "yup";
 import { EmpForm } from "../model";
 import "./EmployeeForm.css";
 
@@ -10,6 +11,7 @@ export default function EmployeeForm() {
     contactNo: "",
   };
 
+  // Validation using formikErrors
   const validate = (values: EmpForm) => {
     const errors: FormikErrors<EmpForm> = {};
 
@@ -39,12 +41,25 @@ export default function EmployeeForm() {
     return errors;
   };
 
+  // Validation using Yup library
+  const validationSchema = Yup.object({
+    firstName: Yup.string()
+      .max(15, "Must be 15 characters or less")
+      .required("Required!!"),
+    lastName: Yup.string()
+      .max(20, "Must be 20 characters or less")
+      .required("Required!!"),
+    email: Yup.string().email("Invalid email address").required("Required!!"),
+    contactNo: Yup.string().required("Required!!"),
+  });
+
   const onSubmit = (values: EmpForm) => console.log("onsubmit", values);
 
   const formik = useFormik({
     initialValues,
     onSubmit,
-    validate,
+    // validate,
+    validationSchema,
   });
 
   return (
