@@ -1,6 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { EmpForm } from "../model";
+import { EmpForm } from "../models/empForm";
 import "./EmployeeForm.css";
 
 export default function EmployeeFormUsingComponent() {
@@ -8,7 +8,7 @@ export default function EmployeeFormUsingComponent() {
     firstName: "",
     lastName: "",
     email: "",
-    contactNo: "",
+    contactNo: ["", ""],
     address: "",
     social: {
       facebook: "",
@@ -25,7 +25,6 @@ export default function EmployeeFormUsingComponent() {
       .max(20, "Must be 20 characters or less")
       .required("Required!!"),
     email: Yup.string().email("Invalid email address").required("Required!!"),
-    contactNo: Yup.string().required("Required!!"),
     address: Yup.string().required("Required!!"),
   });
 
@@ -73,14 +72,23 @@ export default function EmployeeFormUsingComponent() {
         </div>
 
         <div className="form-control">
-          <label htmlFor="contactNo">Contact No.</label>
+          <label htmlFor="primaryContactNo">Primary Contact No.</label>
           <Field
             type="text"
-            id="contactNo"
-            name="contactNo"
-            placeholder="Enter contactNo"
+            id="primaryContactNo"
+            name="contactNo[0]"
+            placeholder="Enter primary contactNo"
           />
-          <ErrorMessage name="contactNo" component="div" className="errorMsg" />
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="secondaryContactNo">Secondary Contact No.</label>
+          <Field
+            type="text"
+            id="secondaryContactNo"
+            name="contactNo[1]"
+            placeholder="Enter secondary contactNo"
+          />
         </div>
 
         <div className="form-control">

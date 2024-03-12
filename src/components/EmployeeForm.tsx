@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { EmpForm } from "../model";
+import { EmpForm } from "../models/empForm";
 import "./EmployeeForm.css";
 
 export default function EmployeeForm() {
