@@ -35,7 +35,11 @@ export default function EmployeeFormUsingComponent() {
     email: Yup.string().email("Invalid email address").required("Required!!"),
   });
 
-  const onSubmit = (values: EmpForm) => console.log("onsubmit", values);
+  const onSubmit = (values: EmpForm, onSubmitProps: any) => {
+    console.log("onsubmit", values);
+    console.log("submit", onSubmitProps);
+    onSubmitProps.setSubmitting(false);
+  };
 
   //Field level validation
   const validateAddress = (value: any) => {
@@ -243,7 +247,8 @@ export default function EmployeeFormUsingComponent() {
               <button
                 type="submit"
                 className="button"
-                disabled={!formik.isValid}
+                //disable button when form is invalid and form submission is in progress
+                disabled={!formik.isValid || formik.isSubmitting}
               >
                 Submit
               </button>
