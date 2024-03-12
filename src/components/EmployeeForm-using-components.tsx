@@ -33,10 +33,18 @@ export default function EmployeeFormUsingComponent() {
       .max(20, "Must be 20 characters or less")
       .required("Required!!"),
     email: Yup.string().email("Invalid email address").required("Required!!"),
-    address: Yup.string().required("Required!!"),
   });
 
   const onSubmit = (values: EmpForm) => console.log("onsubmit", values);
+
+  //Field level validation
+  const validateAddress = (value: any) => {
+    let error: string = "";
+    if (!value) {
+      error = "Required!!!";
+    }
+    return error;
+  };
 
   return (
     //Using Formik Components
@@ -73,8 +81,6 @@ export default function EmployeeFormUsingComponent() {
           {/* updates only when there is change in this field */}
           <FastField type="text" name="email">
             {(props: any) => {
-              console.log("hiii");
-
               const { field, form, meta } = props;
               return (
                 <div>
@@ -121,6 +127,8 @@ export default function EmployeeFormUsingComponent() {
             id="address"
             name="address"
             placeholder="Enter address"
+            // field level validation
+            validate={validateAddress}
           />
           <ErrorMessage name="address" component="div" className="errorMsg" />
         </div>
