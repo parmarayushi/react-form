@@ -39,6 +39,7 @@ export default function EmployeeFormUsingComponent() {
     console.log("onsubmit", values);
     console.log("submit", onSubmitProps);
     onSubmitProps.setSubmitting(false);
+    onSubmitProps.resetForm();
   };
 
   //Field level validation
@@ -215,7 +216,7 @@ export default function EmployeeFormUsingComponent() {
               </FieldArray>
             </div>
             {/* Manually triggering validation */}
-            <button
+            {/* <button
               type="button"
               onClick={() => formik.validateField("address")}
             >
@@ -241,7 +242,7 @@ export default function EmployeeFormUsingComponent() {
               }
             >
               visit all
-            </button>
+            </button> */}
 
             <div className="buttonContainer">
               <button
