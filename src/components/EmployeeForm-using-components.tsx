@@ -1,4 +1,11 @@
-import { ErrorMessage, Field, FieldArray, Form, Formik } from "formik";
+import {
+  ErrorMessage,
+  FastField,
+  Field,
+  FieldArray,
+  Form,
+  Formik,
+} from "formik";
 import * as Yup from "yup";
 import { EmpForm } from "../models/empForm";
 import "./EmployeeForm.css";
@@ -63,12 +70,27 @@ export default function EmployeeFormUsingComponent() {
 
         <div className="form-control">
           <label htmlFor="email">Email</label>
-          <Field
-            type="text"
-            id="email"
-            name="email"
-            placeholder="Enter email"
-          />
+          {/* updates only when there is change in this field */}
+          <FastField type="text" name="email">
+            {(props: any) => {
+              console.log("hiii");
+
+              const { field, form, meta } = props;
+              return (
+                <div>
+                  <input
+                    type="text"
+                    id="email"
+                    placeholder="Enter email"
+                    {...field}
+                  />
+                  {meta.touched && meta.errors ? (
+                    <div className="errorMsg">{meta.errors}</div>
+                  ) : null}
+                </div>
+              );
+            }}
+          </FastField>
           <ErrorMessage name="email" component="div" className="errorMsg" />
         </div>
 
@@ -127,7 +149,6 @@ export default function EmployeeFormUsingComponent() {
           <label htmlFor="linkedin">List of Technologies known</label>
           <FieldArray name="technologiesKnown">
             {(fieldArrayProps) => {
-              console.log("fieldArrayProps", fieldArrayProps);
               const { push, remove, form } = fieldArrayProps;
               const { values } = form;
               const { technologiesKnown } = values;
