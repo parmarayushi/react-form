@@ -52,6 +52,8 @@ export default function EmployeeFormUsingComponent() {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
+      // will populate errors on page load
+      // validateOnMount
     >
       {/* manually triggering validation */}
       {(formik) => {
@@ -238,7 +240,11 @@ export default function EmployeeFormUsingComponent() {
             </button>
 
             <div className="buttonContainer">
-              <button type="submit" className="button">
+              <button
+                type="submit"
+                className="button"
+                disabled={!formik.isValid}
+              >
                 Submit
               </button>
             </div>
