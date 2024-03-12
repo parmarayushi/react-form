@@ -1,4 +1,4 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, FieldArray, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { EmpForm } from "../models/empForm";
 import "./EmployeeForm.css";
@@ -14,6 +14,7 @@ export default function EmployeeFormUsingComponent() {
       facebook: "",
       linkedin: "",
     },
+    technologiesKnown: [""],
   };
 
   // Validation using Yup library
@@ -120,6 +121,46 @@ export default function EmployeeFormUsingComponent() {
             name="social.linkedin"
             placeholder="Enter linkedin profile"
           />
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="linkedin">List of Technologies known</label>
+          <FieldArray name="technologiesKnown">
+            {(fieldArrayProps) => {
+              console.log("fieldArrayProps", fieldArrayProps);
+              const { push, remove, form } = fieldArrayProps;
+              const { values } = form;
+              const { technologiesKnown } = values;
+              return (
+                <>
+                  {technologiesKnown.map(
+                    (technKnown: string[], index: number) => (
+                      <div key={index} className="technology">
+                        <Field name={`technologiesKnown[${index}]`} />
+                        {index > 0 && (
+                          <button
+                            type="button"
+                            className="technology-button"
+                            onClick={() => remove(index)}
+                          >
+                            -
+                          </button>
+                        )}
+
+                        <button
+                          type="button"
+                          className="technology-button"
+                          onClick={() => push("")}
+                        >
+                          +
+                        </button>
+                      </div>
+                    )
+                  )}
+                </>
+              );
+            }}
+          </FieldArray>
         </div>
 
         <div className="buttonContainer">

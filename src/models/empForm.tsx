@@ -8,4 +8,5 @@ export type EmpForm = {
     facebook: string;
     linkedin: string;
   };
+  technologiesKnown: string[];
 };

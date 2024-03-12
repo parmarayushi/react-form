@@ -36,3 +36,16 @@ textarea {
 .errorMsg {
   color: #f52323;
 }
+
+.technology {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.technology-button {
+  font-size: 18px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #add6f0;
+  margin-left: 10px;
+}

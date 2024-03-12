@@ -8,7 +8,13 @@ export default function EmployeeForm() {
     firstName: "",
     lastName: "",
     email: "",
-    contactNo: "",
+    contactNo: ["", ""],
+    address: "",
+    social: {
+      facebook: "",
+      linkedin: "",
+    },
+    technologiesKnown: [""],
   };
 
   // Validation using formikErrors
