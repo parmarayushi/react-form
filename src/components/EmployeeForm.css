@@ -13,10 +13,22 @@
   margin-bottom: 20px;
 }
 
+.radio-options {
+  display: flex;
+}
+
+.options {
+  margin-right: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
 input,
 textarea,
 select {
-  width: 100%;
+  /* width: 100%; */
   padding: 5px;
 }
 
